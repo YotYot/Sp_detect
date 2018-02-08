@@ -18,7 +18,7 @@ im_array = []
 tag_array = []
 
 cmap = plt.get_cmap('jet')
-for pic in glob.glob('/Users/yotam/OneDrive - Cadence Design Systems Inc/Private/final project/submission/runme/small_bw_db/img/*.jpg'):
+for pic in glob.glob('./small_bw_db/img/*.jpg'):
     img = misc.imread(pic)
     img_3l = [img,img,img]
 #    rgba_img = cmap(img)
@@ -29,7 +29,7 @@ for pic in glob.glob('/Users/yotam/OneDrive - Cadence Design Systems Inc/Private
         im_array.append(rgb_img)
         filename = os.path.basename(pic)
         filename_no_ext = os.path.splitext(filename)[0]
-        class_filename = '/Users/yotam/OneDrive - Cadence Design Systems Inc/Private/final project/submission/runme/untitled folder/Archive/'+filename_no_ext+'.mat.txt'
+        class_filename = './Archive/'+filename_no_ext+'.mat.txt'
         with open(class_filename,'r') as f:
             class_int = int(f.read())
             b = np.zeros(3)
@@ -37,7 +37,6 @@ for pic in glob.glob('/Users/yotam/OneDrive - Cadence Design Systems Inc/Private
             tag_array.append(b)
 
 #plt.imshow(np.uint8((im_array[0])))
-#image = misc.imread('/Users/yotam/OneDrive - Cadence Design Systems Inc/Private/final project/submission/runme/small_bw_db/img/102F1_C1_R150.jpg')
 #Get back the convolutional part of a VGG network trained on ImageNet
 model_vgg16_conv = VGG16(weights='imagenet', include_top=False)
 model_vgg16_conv.summary()
